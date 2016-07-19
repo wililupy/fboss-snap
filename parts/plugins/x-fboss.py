@@ -84,16 +84,8 @@ class XFbossPlugin(snapcraft.BasePlugin):
     def pull(self):
         logger.info('Obtaining FBOSS source...')
 
-        self.run(['git', 'clone', 'https://github.com/facebook/fboss.git',
+        self.run(['git', 'clone', 'https://github.com/wililupy/fboss.git',
                   self.sourcedir])
-        self.run(['git', 'checkout', 'ea2f4bd'],
-                 cwd=self.sourcedir)
-
-        # Patch the getdeps.sh script for fbthrift to work on Trusty
-        _search_and_replace_contents(os.path.join(self.sourcedir, 'getdeps.sh'),
-            re.compile(r'update.*https://github.com/facebook/fbthrift.git'),
-            'update https://github.com/facebook/fbthrift.git '
-            '1b2b03a472c41915a8c481a06edc630674377e77')
 
         logger.info('Obtaining (and building) FBOSS dependencies...')
 
