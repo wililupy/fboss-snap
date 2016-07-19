@@ -1,0 +1,70 @@
+name: fboss
+version: 0.1.0
+summary: Facebook Open Switching System
+description: Facebook's software stack for controlling and managing network switches
+confinement: devmode
+
+apps:
+  wedge-agent:
+    command: start_wedge_agent
+    daemon: simple
+
+  fboss-route:
+    command: fboss_route.py
+
+parts:
+  fboss:
+    plugin: fboss
+    build-packages:
+      - pkg-config
+      - iptables-dev
+      - libselinux1-dev
+      - xtables-addons-source
+      - texlive-latex-base
+      - linuxdoc-tools
+      - bison
+      - autoconf
+      - autoconf-archive
+      - cmake
+      - flex
+      - automake
+      - libdb5.3-dev
+      - libtool
+      - libssl-dev
+      - libboost-all-dev
+      - python-dev
+      - libgflags-dev
+      - libgoogle-glog-dev
+      - libdouble-conversion-dev
+      - libevent-dev
+      - libsnappy-dev
+      - libkrb5-dev
+      - libsasl2-dev
+      - libcurl4-nss-dev
+      - libnl-3-dev
+      - libpcap-dev
+      - libnl-route-3-dev
+      - libnuma-dev
+      - libi2c-dev
+      - libusb-1.0-0-dev
+      - make
+      - zip 
+      - git
+      - g++
+      - scons
+      - liblz4-dev
+      - liblzma-dev
+      - zlib1g-dev
+      - binutils-dev
+      - libjemalloc-dev
+      - libiberty-dev
+
+  fboss-launcher:
+    plugin: copy
+    files:
+      src/start_wedge_agent: bin/start_wedge_agent
+
+  fboss-config:
+    plugin: copy
+    files:
+      config/ocp-demo.json: config/ocp-demo.json

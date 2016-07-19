@@ -1,0 +1,9 @@
+#!/bin/sh
+
+wedge_agent \
+    -persistent_state_dir=$SNAP_APP_DATA_PATH/state \
+    -volatile_state_dir=$TMPDIR \
+    -fruid_filepath=$TMPDIR/fruid.json \
+    -mgmt_if=eth0 \
+    -can_warm_boot=false \
+    -config=$SNAP_APP_PATH/config/ocp-demo.json
