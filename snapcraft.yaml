@@ -68,3 +68,11 @@ parts:
     plugin: copy
     files:
       config/ocp-demo.json: config/ocp-demo.json
+
+  fboss-kmods:
+    plugin: copy
+    files:
+      kmods/linux-kernel-bde.ko: kmods/linux-kernel-bde.ko
+      kmods/linux-user-bde.ko: kmods/linux-user-bde.ko
+      kmods/linux-bcm-knet.ko: kmods/linux-bcm-knet.ko
+
