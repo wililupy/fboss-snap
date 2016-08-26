@@ -1,6 +1,6 @@
 #!/bin/sh
 
-KERNEL_MODS=$SNAP_APP_PATH/kmods/
+KERNEL_MODS=$SNAP/kmods/
 MODS="linux-kernel-bde linux-user-bde linux-bcm-knet"
 
 insmod $KERNEL_MODS/linux-kernel-bde.ko maxpayload=128 dmasize=64M
@@ -10,15 +10,14 @@ for mod in $MODS; do
   insmod $KERNEL_MODS/$mod.ko
 done
 
-log_progress_message "; Creating devices "
 [ -e /dev/linux-kernel-bde ] || mknod /dev/linux-kernel-bde c 127 0
 [ -e /dev/linux-user-bde ] || mknod /dev/linux-user-bde c 126 0
 [ -e /dev/linux-bcm-knet ] || mknod /dev/linux-bcm-knet c 122 0
 
 wedge_agent \
-    -persistent_state_dir=$SNAP_APP_DATA_PATH/state \
+    -persistent_state_dir=$SNAP_DATA/state \
     -volatile_state_dir=$TMPDIR \
     -fruid_filepath=$TMPDIR/fruid.json \
     -mgmt_if=eth0 \
     -can_warm_boot=false \
-    -config=$SNAP_APP_PATH/config/ocp-demo.json
+    -config=$SNAP/config/ocp-demo.json

@@ -1,5 +1,5 @@
 name: fboss
-version: 0.1.0
+version: 0.2.0
 summary: Facebook Open Switching System
 description: Facebook's software stack for controlling and managing network switches
 confinement: devmode
@@ -8,9 +8,19 @@ apps:
   wedge-agent:
     command: start_wedge_agent
     daemon: simple
+    plugs: 
+      - network
+      - network-bind
+      - network-control
+      - network-observe
 
   fboss-route:
     command: fboss_route.py
+    plugs:
+      - network
+      - network-bind
+      - network-control
+      - network-observe
 
 parts:
   fboss:
