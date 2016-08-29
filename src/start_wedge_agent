@@ -6,7 +6,6 @@ MODS="linux-kernel-bde linux-user-bde linux-bcm-knet"
 insmod $KERNEL_MODS/linux-kernel-bde.ko maxpayload=128 dmasize=64M
 for mod in $MODS; do
   echo $mod | grep -q kernel && continue
-  log_progress_msg " $mod "
   insmod $KERNEL_MODS/$mod.ko
 done
 
