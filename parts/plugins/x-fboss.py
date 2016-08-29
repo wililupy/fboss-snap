@@ -79,7 +79,8 @@ class XFbossPlugin(snapcraft.BasePlugin):
 
         # Run-time dependencies for fboss
         self.stage_packages.extend(['libpcap0.8', 'libusb-1.0-0',
-                                    'python-ipaddr', 'python-six'])
+                                    'python-ipaddr', 'python-six'
+                                    'python-concurrent.futures'])
 
     def pull(self):
         logger.info('Obtaining FBOSS source...')
