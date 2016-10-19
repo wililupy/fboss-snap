@@ -3,6 +3,7 @@ version: 0.2.0
 summary: Facebook Open Switching System
 description: Facebook's software stack for controlling and managing network switches
 confinement: devmode
+grade: devel
 
 apps:
   wedge-agent:
@@ -70,19 +71,23 @@ parts:
       - libiberty-dev
 
   fboss-launcher:
-    plugin: copy
-    files:
-      src/start_wedge_agent: bin/start_wedge_agent
+    plugin: dump
+    source: src/
+    organize:
+      start_wedge_agent: bin/start_wedge_agent
 
   fboss-config:
-    plugin: copy
-    files:
-      config/ocp-demo.json: config/ocp-demo.json
+    plugin: dump
+    source: config/
+    organize:
+      ocp-demo.json: config/ocp-demo.json
 
   fboss-kmods:
-    plugin: copy
-    files:
-      kmods/linux-kernel-bde.ko: kmods/linux-kernel-bde.ko
-      kmods/linux-user-bde.ko: kmods/linux-user-bde.ko
-      kmods/linux-bcm-knet.ko: kmods/linux-bcm-knet.ko
+    plugin: dump
+    source: kmods/
+    organize:
+      linux-kernel-bde.ko: kmods/linux-kernel-bde.ko
+      linux-user-bde.ko: kmods/linux-user-bde.ko
+      linux-bcm-knet.ko: kmods/linux-bcm-knet.ko
+      
 
