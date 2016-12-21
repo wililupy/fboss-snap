@@ -1,5 +1,5 @@
 name: fboss
-version: 0.2.0
+version: 0.3.0
 summary: Facebook Open Switching System
 description: Facebook's software stack for controlling and managing network switches
 confinement: devmode
@@ -81,13 +81,4 @@ parts:
     source: config/
     organize:
       ocp-demo.json: config/ocp-demo.json
-
-  fboss-kmods:
-    plugin: dump
-    source: kmods/
-    organize:
-      linux-kernel-bde.ko: kmods/linux-kernel-bde.ko
-      linux-user-bde.ko: kmods/linux-user-bde.ko
-      linux-bcm-knet.ko: kmods/linux-bcm-knet.ko
-      
 

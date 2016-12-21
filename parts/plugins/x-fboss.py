@@ -50,32 +50,22 @@ class XFbossPlugin(snapcraft.BasePlugin):
 
         # Run-time dependencies for folly
         self.stage_packages.extend(
-            ['libboost-atomic1.58.0', 'libboost-chrono1.58.0',
-             'libboost-context1.58.0', 'libboost-date-time1.58.0',
-             'libboost-filesystem1.58.0', 'libboost-iostreams1.58.0',
-             'libboost-program-options1.58.0', 'libboost-python1.58.0',
-             'libboost-regex1.58.0', 'libboost-serialization1.58.0',
-             'libboost-system1.58.0', 'libboost-thread1.58.0', 'libevent-2.0-5',
-             'libevent-core-2.0-5', 'libevent-extra-2.0-5',
-             'libevent-pthreads-2.0-5', 'libevent-openssl-2.0-5',
-             'libdouble-conversion1v5', 'libgoogle-glog0v5', 'libgflags2v5',
-             'liblz4-1', 'liblzma5', 'libsnappy1v5', 'zlib1g', 'binutils',
-             'libjemalloc1', 'libssl1.0.0'])
+            ['g++', 'automake', 'autoconf', 'autoconf-archive', 'libtool',
+             'libboost-all-dev', 'libevent-dev', 'libdouble-conversion-dev',
+             'libgoogle-glog-dev', 'libgflags-dev', 'liblz4-dev', 'liblzma-dev',
+             'libsnappy-dev', 'make', 'zlib1g-dev', 'binutils-dev', 
+             'libjemalloc-dev', 'libssl-dev', 'libunwind8-dev', 'libelf-dev',
+             'libdwarf-dev', 'libiberty-dev'])
 
         # Run-time dependencies for fbthrift
         self.stage_packages.extend(
-            ['libkrb5-3', 'libk5crypto3', 'libgssapi-krb5-2', 'libgssrpc4',
-             'libkadm5srv-mit9', 'libkadm5clnt-mit9', 'libcomerr2',
-             'libasn1-8-heimdal', 'libgssapi3-heimdal', 'libhcrypto4-heimdal',
-             'libhdb9-heimdal', 'libheimbase1-heimdal', 'libhx509-5-heimdal',
-             'libkadm5clnt7-heimdal', 'libkadm5srv8-heimdal',
-             'libkafs0-heimdal', 'libkdc2-heimdal', 'libkrb5-26-heimdal',
-             'libwind0-heimdal', 'libotp0-heimdal', 'libsl0-heimdal',
-             'libroken18-heimdal', 'heimdal-clients', 'libsasl2-2',
-             'libnuma1', 'libssl1.0.0', 'zlib1g'])
+            ['flex', 'bison', 'libkrb5-dev', 'libsasl2-dev', 'libnuma-dev',
+             'pkg-config', 'libssl-dev', 'make', 'autoconf', 'libtool', 'g++',
+             'libboost-all-dev', 'libevent-dev', 'libgoogle-glog-dev', 
+             'libdouble-conversion-dev', 'scons', 'libsnappy-dev'])
 
         # Run-time dependencies for iproute
-        self.stage_packages.append('libdb5.3')
+        self.stage_packages.extend(['libdb5.3', 'libdb5.3-dev'])
 
         # Run-time dependencies for fboss
         self.stage_packages.extend(['libpcap0.8', 'libusb-1.0-0',
@@ -85,7 +75,7 @@ class XFbossPlugin(snapcraft.BasePlugin):
     def pull(self):
         logger.info('Obtaining FBOSS source...')
 
-        self.run(['git', 'clone', 'https://github.com/wililupy/fboss.git',
+        self.run(['git', 'clone', 'https://github.com/Facebook/fboss.git',
                   self.sourcedir])
 
         logger.info('Obtaining (and building) FBOSS dependencies...')
