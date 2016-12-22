@@ -26,6 +26,8 @@ apps:
 parts:
   fboss:
     plugin: fboss
+    source: https://github.com/Facebook/FBOSS.git
+    source-type: git
     build-packages:
       - pkg-config
       - iptables-dev

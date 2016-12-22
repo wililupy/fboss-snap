@@ -73,10 +73,10 @@ class XFbossPlugin(snapcraft.BasePlugin):
                                     'python-concurrent.futures'])
 
     def pull(self):
-        logger.info('Obtaining FBOSS source...')
+        # logger.info('Obtaining FBOSS source...')
 
-        self.run(['git', 'clone', 'https://github.com/Facebook/fboss.git',
-                  self.sourcedir])
+        # self.run(['git', 'clone', 'https://github.com/Facebook/fboss.git',
+        #           self.sourcedir])
 
         logger.info('Obtaining (and building) FBOSS dependencies...')
 
